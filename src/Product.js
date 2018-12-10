@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 class Product extends Component {
   addToCartOnClick = () => {
-    console.log("Add to Cart Clicked for " + this.props.e);
+    this.props.addToCart(this.props.e);
   };
 
   render() {
