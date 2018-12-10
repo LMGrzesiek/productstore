@@ -1,6 +1,10 @@
 import React, { Component } from "react";
 
 class Product extends Component {
+  addToCartOnClick = () => {
+    console.log("Add to Cart Clicked for " + this.props.e);
+  };
+
   render() {
     return (
       <div className="item col-4">
@@ -14,7 +18,7 @@ class Product extends Component {
           </div>
           <div className="caption card-body">
             <h4 className="group card-title inner list-group-item-heading">
-              Product title
+              {this.props.e}
             </h4>
             <p className="group inner list-group-item-text">
               Product description... Lorem ipsum dolor sit amet, consectetuer
@@ -26,9 +30,12 @@ class Product extends Component {
                 <p className="lead">$21.000</p>
               </div>
               <div className="col-12 col-md-6">
-                <a className="btn btn-success" href="#">
-                  Add to cart
-                </a>
+                <button
+                  className="btn btn-success"
+                  onClick={this.addToCartOnClick}
+                >
+                  Add to Cart
+                </button>
               </div>
             </div>
           </div>

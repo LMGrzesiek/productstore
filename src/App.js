@@ -13,8 +13,15 @@ class App extends Component {
             <div className="col-12 my-3" />
           </div>
           <div id="products" className="row view-group">
-            {[0, 1, 2, 3, 4, 5].map(e => (
-              <Product />
+            {[
+              "Fried Chocolate Balls",
+              "Fried Twix",
+              "Deep Fried Pickles",
+              "Country Fried Steak",
+              "Fried Butter",
+              "Fried Oreos"
+            ].map(e => (
+              <Product e={e} />
             ))}
           </div>
         </div>
