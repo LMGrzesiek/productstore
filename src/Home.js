@@ -70,7 +70,7 @@ class Home extends Component {
             <Product
               e={e}
               addToCart={this.addToCart}
-              key={e}
+              key={e.ID}
               viewAsGrid={this.state.viewAsGrid}
             />
           ))}

@@ -1,11 +1,24 @@
 [
-  "Chocolate Chip",
-  "Pistachio Cranberry",
-  "Double Fudge",
-  "Macadamia White Chocolate",
-  "Caramel",
-  "Soft Bake",
-  "Blondie",
-  "Sugar 'n' Sprinkles",
-  "Oatmeal Raisin"
+  {
+    "ID": 1,
+    "Name": "Chocolate Chip",
+    "Price": 2.49,
+    "Description": "Those that have ze chips de chocolate.",
+    "Image": "./images/chocolatechip.jpg"
+  },
+
+  {
+    "ID": 2,
+    "Name": "Pistachio Cranberry",
+    "Price": 2.99,
+    "Description": "The flavor combiantion you never thought you wanted, but now need.",
+    "Image": "./images/pistachiocranberry.jpg"
+  },
+  {
+    "ID": 3,
+    "Name": "Double Fudge",
+    "Price": 2.99,
+    "Description": "2x the fudge, 3x the fun.",
+    "Image": "./images/doublefudge.jpg"
+  }
 ]
