@@ -32,7 +32,7 @@ class NavBar extends Component {
               <a href="#">
                 <button type="button" class="btn btn-secondary">
                   <i class="fas fa-cart-arrow-down" />
-                  <span class="badge badge-secondary">{this.props.number}</span>
+                  <span class="badge badge-secondary">{this.props.count}</span>
                 </button>
               </a>
             </li>

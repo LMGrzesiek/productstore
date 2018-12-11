@@ -21,8 +21,8 @@ class App extends Component {
   render() {
     return (
       <div>
-        {[this.state.cart.length].map(number => (
-          <NavBar number={number} />
+        {[this.state.cart.length].map(count => (
+          <NavBar count={count} />
         ))}
         <div className="container">
           <div className="row">
