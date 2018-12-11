@@ -2,9 +2,10 @@ import React, { Component } from "react";
 
 import { Switch, Route } from "react-router-dom";
 
-import Product from "./Product";
+import Home from "./Home";
 import NavBar from "./NavBar";
 import Cart from "./Cart";
+import About from "./About";
 
 class App extends Component {
   constructor() {
@@ -25,31 +26,15 @@ class App extends Component {
   render() {
     return (
       <div>
-        <NavBar count={this.state.cart.length} />
+        <NavBar quantity={this.state.cart.length} />
         <div className="row">
           <div className="col-12 my-3" />
         </div>
         <div className="container">
           <Switch>
+            <Route path="/home" component={Home} />
             <Route path="/cart" component={Cart} />
-            <Route
-              path="/"
-              exact
-              render={routeProps => (
-                <div id="products" className="row view-group">
-                  {[
-                    "Hot Dog",
-                    "Ice Cream",
-                    "Root Beer",
-                    "Cold Beer",
-                    "French Fries",
-                    "Onion Rings"
-                  ].map(e => (
-                    <Product e={e} addToCart={this.addToCart} key={e} />
-                  ))}
-                </div>
-              )}
-            />
+            <Route path="/about" component={About} />
           </Switch>
         </div>
       </div>
