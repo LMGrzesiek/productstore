@@ -21,16 +21,13 @@ class App extends Component {
   render() {
     return (
       <div>
-        <NavBar />
+        {[this.state.cart.length].map(number => (
+          <NavBar number={number} />
+        ))}
         <div className="container">
           <div className="row">
             <div className="col-12 my-3" />
             <p>There are {this.state.cart.length} items in your cart</p>
-            <ul>
-              {this.state.cart.map(e => (
-                <li>{e}</li>
-              ))}
-            </ul>{" "}
           </div>
           <div id="products" className="row view-group">
             {[

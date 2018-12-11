@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import App from "./App";
+import Product from "./Product";
 
 class NavBar extends Component {
   render() {
@@ -24,6 +26,14 @@ class NavBar extends Component {
             <li class="nav-item active">
               <a class="nav-link" href="#">
                 Home <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <button type="button" class="btn btn-secondary">
+                  <i class="fas fa-cart-arrow-down" />
+                  <span class="badge badge-secondary">{this.props.number}</span>
+                </button>
               </a>
             </li>
             <li class="nav-item">
