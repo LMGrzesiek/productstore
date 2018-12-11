@@ -1,14 +1,18 @@
 import React, { Component } from "react";
 
+import { Switch, Route } from "react-router-dom";
+
 import Product from "./Product";
 import NavBar from "./NavBar";
+import Cart from "./Cart";
 
 class App extends Component {
   constructor() {
     super();
 
     this.state = {
-      cart: []
+      cart: [],
+      showCart: false
     };
   }
 
@@ -22,22 +26,31 @@ class App extends Component {
     return (
       <div>
         <NavBar count={this.state.cart.length} />
+        <div className="row">
+          <div className="col-12 my-3" />
+        </div>
         <div className="container">
-          <div className="row">
-            <div className="col-12 my-3" />
-          </div>
-          <div id="products" className="row view-group">
-            {[
-              "Fried Chocolate Balls",
-              "Fried Twix",
-              "Deep Fried Pickles",
-              "Country Fried Steak",
-              "Fried Butter",
-              "Fried Oreos"
-            ].map(e => (
-              <Product e={e} addToCart={this.addToCart} />
-            ))}
-          </div>
+          <Switch>
+            <Route path="/cart" component={Cart} />
+            <Route
+              path="/"
+              exact
+              render={routeProps => (
+                <div id="products" className="row view-group">
+                  {[
+                    "Hot Dog",
+                    "Ice Cream",
+                    "Root Beer",
+                    "Cold Beer",
+                    "French Fries",
+                    "Onion Rings"
+                  ].map(e => (
+                    <Product e={e} addToCart={this.addToCart} key={e} />
+                  ))}
+                </div>
+              )}
+            />
+          </Switch>
         </div>
       </div>
     );
