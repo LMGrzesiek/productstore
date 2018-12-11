@@ -7,7 +7,8 @@ class Home extends Component {
     super();
 
     this.state = {
-      viewAsGrid: true
+      viewAsGrid: true,
+      products: []
     };
   }
 
@@ -17,6 +18,17 @@ class Home extends Component {
       return { viewAsGrid: !this.state.viewAsGrid };
     });
   };
+
+  componentDidMount() {
+    fetch("./products.json").then(response => {
+      response.json().then(data => {
+        //Setting state on a component should kick-off the update lifecycle
+        this.setState(state => {
+          return { products: data };
+        });
+      });
+    });
+  }
 
   render() {
     return (
@@ -54,14 +66,7 @@ class Home extends Component {
           </div>
         </div>
         <div id="products" className="row view-group">
-          {[
-            "Chocolate Chip",
-            "Pistachio Cranberry",
-            "Double Fudge",
-            "Macadamia White Chocolate",
-            "Caramel",
-            "Soft Bake"
-          ].map(e => (
+          {this.state.products.map(e => (
             <Product
               e={e}
               addToCart={this.addToCart}
