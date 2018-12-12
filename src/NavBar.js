@@ -41,6 +41,28 @@ class NavBar extends Component {
                 About
               </NavLink>
             </li>
+            {this.props.firebase.auth.isEmpty ? (
+              <li className="nav-item">
+                <NavLink className="nav-link" to="/register">
+                  Register
+                </NavLink>
+              </li>
+            ) : (
+              ""
+            )}
+            {this.props.firebase.auth.isEmpty ? (
+              <li className="nav-item">
+                <NavLink className="nav-link" to="/login">
+                  Log In
+                </NavLink>
+              </li>
+            ) : (
+              <li className="nav-item">
+                <NavLink className="nav-link" to="/logout">
+                  Log Out
+                </NavLink>
+              </li>
+            )}
           </ul>
         </div>
       </nav>
@@ -50,7 +72,8 @@ class NavBar extends Component {
 
 const mapStateToProps = state => {
   return {
-    cart: state.cartReducer
+    cart: state.cartReducer,
+    firebase: state.firebaseReducer
   };
 };
 

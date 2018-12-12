@@ -6,6 +6,7 @@ import Home from "./Home";
 import NavBar from "./NavBar";
 import Cart from "./Cart";
 import About from "./About";
+import Register from "./Register";
 
 class App extends Component {
   constructor() {
@@ -36,6 +37,7 @@ class App extends Component {
             <Route path="/home" component={Home} />
             <Route path="/cart" component={Cart} />
             <Route path="/about" component={About} />
+            <Route path="/register" component={Register} />
           </Switch>
         </div>
       </div>
