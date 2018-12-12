@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 
 import { NavLink } from "react-router-dom";
 
@@ -6,8 +7,8 @@ class NavBar extends Component {
   render() {
     return (
       <nav className="navbar navbar-expand-lg navbar-light bg-light">
-        <NavLink className="navbar-brand" to="/home">
-          Logan's Cookies
+        <NavLink className="navbar-brand" to="/">
+          React Store
         </NavLink>
         <button
           className="navbar-toggler"
@@ -20,19 +21,18 @@ class NavBar extends Component {
         >
           <span className="navbar-toggler-icon" />
         </button>
-
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav mr-auto">
-            <li className="nav-item active">
-              <NavLink className="nav-link" to="/home">
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/">
                 Home
               </NavLink>
             </li>
             <li className="nav-item">
               <NavLink className="nav-link" to="/cart">
-                <i className="fas fa-cart-arrow-down" />
-                <span className="badge badge-default">
-                  {this.props.quantity}
+                <i className="fas fa-shopping-cart" />
+                <span className="badge badge-secondary">
+                  {this.props.cart.length}
                 </span>
               </NavLink>
             </li>
@@ -47,4 +47,11 @@ class NavBar extends Component {
     );
   }
 }
-export default NavBar;
+
+const mapStateToProps = state => {
+  return {
+    cart: state.cartReducer
+  };
+};
+
+export default connect(mapStateToProps)(NavBar);
