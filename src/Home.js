@@ -2,6 +2,10 @@ import React, { Component } from "react";
 
 import Product from "./Product";
 
+import { connect } from "react-redux";
+
+import { addProducts } from "./actions";
+
 class Home extends Component {
   constructor() {
     super();
@@ -20,14 +24,13 @@ class Home extends Component {
   };
 
   componentDidMount() {
-    fetch("./products.json").then(response => {
-      response.json().then(data => {
-        //Setting state on a component should kick-off the update lifecycle
-        this.setState(state => {
-          return { products: data };
+    if (this.props.products.length === 0) {
+      fetch("./products.json").then(response => {
+        response.json().then(data => {
+          this.props.addProducts(data);
         });
       });
-    });
+    }
   }
 
   render() {
@@ -66,7 +69,7 @@ class Home extends Component {
           </div>
         </div>
         <div id="products" className="row view-group">
-          {this.state.products.map(e => (
+          {this.props.products.map(e => (
             <Product
               e={e}
               addToCart={this.addToCart}
@@ -80,4 +83,21 @@ class Home extends Component {
   }
 }
 
-export default Home;
+const mapStateToProps = state => {
+  return {
+    products: state.productsReducer
+  };
+};
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+    addProducts: products => {
+      dispatch(addProducts(products));
+    }
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Home);

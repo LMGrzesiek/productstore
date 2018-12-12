@@ -5,9 +5,19 @@ import * as serviceWorker from "./serviceWorker";
 
 import { BrowserRouter } from "react-router-dom";
 
+//The createStore and Provider functions will allow me to register my custom store
+//so that my components can interact with it
+import { createStore } from "redux";
+import { Provider } from "react-redux";
+import store from "./store";
+
+const createdStore = createStore(store);
+
 ReactDOM.render(
   <BrowserRouter>
-    <App />
+    <Provider store={createdStore}>
+      <App />
+    </Provider>
   </BrowserRouter>,
   document.getElementById("root")
 );

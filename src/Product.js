@@ -1,5 +1,8 @@
 import React, { Component } from "react";
 
+import { connect } from "react-redux";
+import { addToCart } from "./actions";
+
 class Product extends Component {
   addToCartOnClick = () => {
     console.log("clicked " + this.props.e);
@@ -8,7 +11,7 @@ class Product extends Component {
   render() {
     return this.props.viewAsGrid ? (
       <div className="item col-4">
-        <div className="thumbnail card">
+        <div className="thumbnail card py-3 my-1 px-3">
           <div className="img-event">
             <img
               className="group list-group-image img-fluid"
@@ -30,7 +33,7 @@ class Product extends Component {
               <div className="col-12 col-md-6">
                 <button
                   className="btn btn-success"
-                  onClick={this.addToCartOnClick}
+                  onClick={() => this.props.addToCart(this.props.e)}
                 >
                   Add to cart
                 </button>
@@ -55,7 +58,7 @@ class Product extends Component {
               <div className="col-12 col-md-6">
                 <button
                   className="btn btn-success"
-                  onClick={this.addToCartOnClick}
+                  onClick={() => this.props.addToCart(this.props.e)}
                 >
                   Add to cart
                 </button>
@@ -68,4 +71,19 @@ class Product extends Component {
   }
 }
 
-export default Product;
+const mapStateToProps = state => {
+  return {};
+};
+
+const mapDispatchToProps = (dispatch, ownProps) => {
+  return {
+    addToCart: product => {
+      dispatch(addToCart(product));
+    }
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Product);
